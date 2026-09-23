@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* Craft Spark color palette + fonts. Use these in class names,
+   e.g. bg-bubblegum, text-grape, font-display. */
+@theme inline {
+  --font-display: var(--font-fredoka);
+  --font-sans: var(--font-nunito);
+
+  --color-cream: #fffaf3;
+  --color-ink: #3b2f4a;
+  --color-grape: #7c5cbf;
+  --color-bubblegum: #ffb3d1;
+  --color-peach: #ffd3b0;
+  --color-lemon: #fff2a8;
+  --color-mint: #bdf0d9;
+  --color-sky: #bfe3ff;
+  --color-lilac: #dcccff;
+}
+
+body {
+  background-color: var(--color-cream);
+  /* Soft confetti dots in the background */
+  background-image:
+    radial-gradient(circle at 10% 20%, #ffd6e8 0 6px, transparent 7px),
+    radial-gradient(circle at 80% 10%, #d6f5e8 0 5px, transparent 6px),
+    radial-gradient(circle at 60% 70%, #e6dcff 0 6px, transparent 7px),
+    radial-gradient(circle at 25% 85%, #fff2a8 0 5px, transparent 6px);
+  background-size: 320px 320px;
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.field {
+  width: 100%;
+  border-radius: 1rem;
+  border: 2px solid #eadff7;
+  background: white;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  color: var(--color-ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--color-grape);
+  box-shadow: 0 0 0 4px #e9ddff;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.8s ease-in-out infinite;
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-wiggle, .animate-pop-in { animation: none; }
+}
